@@ -1,9 +1,9 @@
 import React from 'react'
 
 const About = () => {
-  return (
+    return (
     <div>
-      <h1>This is the About Page of iNotebook</h1>
+      <h1>About Page</h1>
     </div>
   )
 }

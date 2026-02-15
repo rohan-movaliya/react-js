@@ -26,7 +26,7 @@ def get_notes(
 ):
     return db.query(Note).filter(Note.user_id == user.id).all()
 
-@router.put("/{note_id}", response_model=NoteResponse)
+@router.put("/{note_id}/", response_model=NoteResponse)
 def update_note(
     note_id: int,
     note: NoteCreate,
@@ -44,7 +44,7 @@ def update_note(
     db.refresh(db_note)
     return db_note
 
-@router.delete("/{note_id}")
+@router.delete("/{note_id}/")
 def delete_note(
     note_id: int,
     db: Session = Depends(get_db),

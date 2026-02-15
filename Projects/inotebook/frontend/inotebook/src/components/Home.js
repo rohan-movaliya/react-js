@@ -1,11 +1,11 @@
-import React from 'react'
+import Notes from "./Notes";
 
 const Home = () => {
   return (
     <div>
-      <h1>This is the Home Page of iNotebook</h1>
+      <Notes />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
