@@ -7,6 +7,11 @@ class UserCreate(BaseModel):
     password: str
 
 
+class LoginRequest(BaseModel):
+    username: str  # This will be the email
+    password: str
+
+
 class UserResponse(BaseModel):
     id: int
     name: str

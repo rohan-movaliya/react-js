@@ -5,7 +5,7 @@ from passlib.context import CryptContext
 
 SECRET_KEY = "SUPER_SECRET_KEY"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 60
+ACCESS_TOKEN_EXPIRE_DAYS = 30
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -17,10 +17,12 @@ def hash_password(password: str) -> str:
     return pwd_context.hash(_sha256(password))
 
 def verify_password(password: str, hashed: str) -> bool:
+    print(_sha256(password))
+    print(hashed)
     return pwd_context.verify(_sha256(password), hashed)
 
 def create_access_token(data: dict):
     to_encode = data.copy()
-    expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    expire = datetime.utcnow() + timedelta(days=ACCESS_TOKEN_EXPIRE_DAYS)
     to_encode.update({"exp": expire})
     return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
